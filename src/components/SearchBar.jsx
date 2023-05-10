@@ -11,7 +11,7 @@ export default function SearchBar({onSearch}) {
    return (
       <div>
           <input className={styles.bar} type='search' onChange={handleChange} value={id} />
-         <button className={styles.boton} onClick={()=>onSearch(id)}>Agregar!</button>
+         <button className={styles.boton} onClick={()=>{onSearch(id);setId("")}}>Agregar!</button>
       </div>
    );
 }

@@ -11,13 +11,13 @@ import Form from './components/Form';
 
 //const URL_BASE = "https://be-a-rym.up.railway.app/api";
 //const API_KEY = ""
+const EMAIL = "fabri_501@hotmail.com"
+const PASSWORD = "1234abcd"
 
 function App() {
    const location = useLocation();
    const [characters, setCharacters] = useState([]);
    const [access,setAccess]= useState(false);
-   const EMAIL = "fabri_501@hotmail.com"
-   const PASSWORD = "1234abcd"
    const navigate = useNavigate();
 
    function login(userData) {
@@ -32,11 +32,12 @@ function App() {
 
    const onSearch = (id) => {
       axios(`https://rickandmortyapi.com/api/character/${id}`)
-      .then(({ data }) => {
-         if (data.name && !characters.find((char)=>char.id===data.id)) {
+      .then(response => response.data)
+      .then((data) => {
+         if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {
-            window.alert('Error: Id repetido/inexistente!');
+            window.alert('¡No hay personajes con este ID!');
          }
       });
    }
@@ -47,7 +48,7 @@ function App() {
    }
    return (
       <div className='App'> 
-      {location.pathname !== "/" ? <Nav onSearch={onSearch}/> : null}
+      {location.pathname !== "/" ? <Nav onSearch={onSearch} setAccess={setAccess} /> : null}
      
       <Routes>
          <Route path="/" element={<Form login={login}/>}/>
