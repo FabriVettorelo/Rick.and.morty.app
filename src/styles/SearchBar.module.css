@@ -1,0 +1,24 @@
+.bar{
+    align-items: center;
+    background-color: black;
+    font-size: 24px;
+    color: white;
+    margin-top: 50px;
+}
+.bar:hover{
+ color:black;
+ background-color: white;
+ transition: 1s;
+}
+
+.boton{
+    align-items: center;
+    background-color: black;
+    font-size: 24px;
+    color: rgb(174, 188, 104);
+}
+.boton:hover{
+    color: blue;
+    background-color: bisque;
+    transition: 1s;
+}

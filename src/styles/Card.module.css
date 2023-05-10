@@ -1,0 +1,46 @@
+.listItem {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    width: fit-content;
+    background-color: #a39fc3;
+    margin:auto;
+    font-weight: 500;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px 0px rgba(46, 44, 44, 0.75);
+  }
+  .listItem:hover {
+    background-color: rgba(0, 0, 0, 0.608);
+    transition: 1s;
+    color: rgb(255, 255, 255);
+  }
+  
+  .listItem img {
+    width: auto;
+    height: 250px;
+    object-fit:fill;
+    justify-content: center;
+    margin:5px;
+  }
+  .listItem h2 {
+    display:grid;
+    font-size: 16px;
+  }
+  .listItem h1{
+    background-color: blueviolet;
+    color: aliceblue;
+  }
+  .closeButton{
+    border:0px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 20px;
+    box-shadow: 2px 2px 1px 0px rgba(46, 44, 44, 0.75);
+    transition: 1s;
+  }
+  .closeButton:hover{
+    background-color: rgb(254, 7, 7);
+    color:white;
+    box-shadow: 5px 5px 3px 0px rgba(238, 27, 27, 0.75);
+    cursor:pointer;
+  }

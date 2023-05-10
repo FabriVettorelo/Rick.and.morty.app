@@ -1,0 +1,10 @@
+.detailcontainer{
+    background-color: rgba(240, 255, 255, 0.642);
+    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    align-items: left;
+    display: list-item;
+}
+.detailcontainer img{
+margin: 2px;
+}
