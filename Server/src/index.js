@@ -13,4 +13,4 @@ http
         .end(JSON.stringify(characterFound))
     }
 })
-.listen(3001,"localhost")
+.listen(3001,"localhost");
