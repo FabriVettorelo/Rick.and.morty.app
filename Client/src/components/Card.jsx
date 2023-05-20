@@ -1,11 +1,11 @@
 import style from "../styles/Card.module.css"
-import { Link } from "react-router-dom";
+import { Link , useLocation} from "react-router-dom";
 import { addFav,removeFav } from "../redux/actions";
 import { connect } from "react-redux";
 import { useState , useEffect} from "react";
 
  function Card ({id,name,species,gender,image,onClose,addFav,removeFav, myFavorites}){
-
+   let location = useLocation()
    const [isFav, setIsFav]=useState(false);
    const handleFavorite = ()=>{
       if(isFav){
@@ -31,7 +31,7 @@ import { useState , useEffect} from "react";
    ) : (
       <button onClick={handleFavorite}>🤍</button>
    )}
-       <button onClick={()=>onClose(id)} className={style.closeButton}>X</button>
+      {location.pathname==="/home"?<button onClick={()=>onClose(id)} className={style.closeButton}>X</button>: ""}
          <img src={image} alt='' />
          <Link to={`/detail/${id}`} >
          <h1>{name}</h1>
