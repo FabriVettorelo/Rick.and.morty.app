@@ -4,58 +4,56 @@ import { addFav,removeFav } from "../redux/actions";
 import { connect } from "react-redux";
 import { useState , useEffect} from "react";
 
- function Card ({id,name,origin,status,species,gender,image,onClose,addFav,removeFav, myFavorites}){
+ function Card ({id,name,origin,status,species,gender,image,addFav,removeFav, myFavorites,onClick, selected}){
    let location = useLocation()
    const [isFav, setIsFav]=useState(false);
-   const handleFavorite = ()=>{
-      if(isFav){
-         setIsFav(false);
-         removeFav(id);
-      } else{
-         setIsFav(true);
-         addFav({id,name,origin,status,species,gender,image,onClose})
-      }
-   }
+
    useEffect(() => {
       myFavorites.forEach((fav) => {
-         if (fav.id === id) {
-            setIsFav(true);
-         }
+        if (fav.id === id) {
+          setIsFav(true);
+        }
       });
-   }, [myFavorites]);
+    }, [myFavorites, id]);
 
-   return (
-      <div className={style.listItem}>
-           {isFav ? (
-      <button onClick={handleFavorite}>❤️</button>
-   ) : (
-      <button onClick={handleFavorite}>🤍</button>
-   )}
-      {location.pathname==="/home"?<button onClick={()=>onClose(id)} className={style.closeButton}>X</button>: ""}
-         <img src={image} alt='' />
-         <Link to={`/detail/${id}`} >
-         <h1>{name}</h1>
-         </Link>
-         <h2>{species}</h2>
-         <h2>{gender}</h2>
+    const handleFavorite = () => {
+      if (isFav) {
+        setIsFav(false);
+        removeFav(id);
+
+      } else {
+        setIsFav(true);
+        addFav({ id, name, origin, status, species, gender, image});
+      }
+    };
+
+    return (
+      <div className={style.listItem} >
+        {isFav ? (
+          <button style={{fontSize:"2vh"}} onClick={handleFavorite}>❤️</button>
+        ) : (
+          <button style={{fontSize:"2vh"}} onClick={handleFavorite}>🤍</button>
+        )}
        
+        <img src={image} alt='' onClick={() => onClick({ id, name, origin, status, species, gender, image })} />
       </div>
-   );
-}
-const mapsStateToProps = (state)=>{
-   return{
-      myFavorites: state.myFavorites
-   }
-}
-
-const mapDispatchToProps=(dispatch)=>{
-   return{
-      addFav: (character)=>{(dispatch(addFav(character)))},
-      removeFav: (id)=>{dispatch(removeFav(id))}
-   }
-}
-
-export default connect(
-   mapsStateToProps,
-   mapDispatchToProps
-)(Card);
+    );
+  }
+  
+  const mapsStateToProps = (state) => {
+    return {
+      myFavorites: state.myFavorites,
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      addFav: (character) => { (dispatch(addFav(character))) },
+      removeFav: (id) => { dispatch(removeFav(id)) }
+    }
+  }
+  
+  export default connect(
+    mapsStateToProps,
+    mapDispatchToProps
+  )(Card);

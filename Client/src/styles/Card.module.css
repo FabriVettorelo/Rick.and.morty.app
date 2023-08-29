@@ -1,34 +1,41 @@
 .listItem {
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    width: fit-content;
-    background-color: #a39fc3;
-    margin:auto;
-    font-weight: 500;
-    border-radius: 10px;
-    box-shadow: 10px 10px 5px 0px rgba(46, 44, 44, 0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  margin:1.5vw;
+  border-radius: 7vh;
+  height: 14vh;
+  width: 8.5vw ;
   }
   .listItem:hover {
-    background-color: rgba(0, 0, 0, 0.608);
     transition: 1s;
-    color: rgb(255, 255, 255);
+    color: rgb(15, 69, 215);
+    cursor: pointer;
   }
   
   .listItem img {
     width: auto;
-    height: 250px;
+    height: 16vh;
     object-fit:fill;
     justify-content: center;
-    margin:5px;
+    border-radius:8vh;
   }
   .listItem h2 {
     display:grid;
-    font-size: 16px;
+    font-size: 1.7vh;
+    margin:0.3vh
   }
   .listItem h1{
+    font-size:2.2vh;
     background-color: blueviolet;
     color: aliceblue;
+  }
+  .listItem button{
+    background-color: rgba(127, 255, 212, 0);
+    width: 2vw;
+    border-color: rgba(0, 0, 0, 0);
+    align-self: center;
+    
   }
   .closeButton{
     border:0px;

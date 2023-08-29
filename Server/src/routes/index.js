@@ -4,15 +4,26 @@ const router = require("express").Router();
 const postUser = require('../controllers/postUser')
 const postFav = require('../controllers/postFav')
 const deleteFav = require('../controllers/deleteFav')
+const {loadChars} = require('../controllers/loadChars')
+const handleFav = require("../controllers/handleFavorites")
+const loadUsers = require("../controllers/loadUsers")
 
 router.get('/character/:id',(req,res)=>{
     getCharById(req,res);
 })
-router.get('/login', (req,res)=>{
+router.post('/login', (req,res)=>{
     login(req,res)
 } )
-router.post('/login',postUser)
-
+router.get('/chars', (req,res)=>{
+    loadChars(req,res)
+} )
+router.get('/fav', (req,res)=>{
+    handleFav(req,res)
+} )
+router.post('/users',postUser);
+router.get('/users', (req,res)=>{
+    loadUsers(req,res)
+} )
 router.post('/fav', (req,res)=>{
      postFav(req,res)
 })

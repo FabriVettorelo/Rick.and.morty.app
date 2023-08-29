@@ -1,16 +1,12 @@
-import SearchBar from "./SearchBar.jsx";
 import { NavLink } from "react-router-dom";
 
 const Nav = ({onSearch}) => {
     return (
-    <div>
-        <SearchBar onSearch={onSearch}/>
-        
-        <button><NavLink to="/about">About</NavLink>  </button>
-        <button><NavLink to="/home">Back to Home</NavLink></button>
-        <button><NavLink to="/favorites">Favorites</NavLink></button>
-
-        <button><NavLink to="/">LogOut</NavLink></button>
+    <div style={{display:"flex",margin:"2vh",alignItems:"center",justifyContent:"center"}}>      
+        <button style={{backgroundColor:"violet",fontSize:"3vh",fontWeight:"bold"}}><NavLink to="/about">❔</NavLink>  </button>
+        <button style={{backgroundColor:"violet",fontSize:"3vh",fontWeight:"bold"}}><NavLink to="/home">🏡</NavLink></button>
+        <button style={{backgroundColor:"violet",fontSize:"3vh",fontWeight:"bold"}}><NavLink to="/favorites">❤️</NavLink></button>
+        <button style={{backgroundColor:"purple",fontSize:"3.4vh",fontWeight:"bold"}}><NavLink to="/">Exit</NavLink></button>
     </div>
     )
 }
