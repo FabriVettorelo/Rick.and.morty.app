@@ -2,6 +2,7 @@ const {User} = require('../DB_connection');
 
 const postUser = async (req,res)=>{
     try {
+      console.log(req.body)
      const {email,password} = req.body;
      if(!email || !password)throw Error("Faltan datos")
      const newUser= await User.findOrCreate({where:{email,password}})

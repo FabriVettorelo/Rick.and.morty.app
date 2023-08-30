@@ -1,31 +1,27 @@
-export default function Pagination({ charactersPerPage, totalCharacters, paginate, currentPage }) {
-  const pageNumbers = [];
+import React from 'react';
 
-  for (let i = 1; i <= Math.ceil(totalCharacters / charactersPerPage); i++) {
-    pageNumbers.push(i);
-  }
+export default function Pagination({ charactersPerPage, totalCharacters, currentPage, paginate }) {
+  const totalPages = Math.ceil(totalCharacters / charactersPerPage);
 
   return (
-    <nav>
-      <ul>
-        {pageNumbers.map(number => (
-          <a
-            key={number}
-            style={{
-              color: currentPage === number ? 'red' : 'cyan',
-              fontWeight: currentPage === number ? 'bold' : 'normal',
-              margin: '0.5vw',
-              fontSize: '2vh',
-              fontWeight:"bold"
-            }}
-            onClick={() => paginate(number)}
-            href="javascript:void(0);"
-            className="page-link"
-          >
-            {number}
-          </a>
-        ))}
-      </ul>
+    <nav style={{display:"flex",alignItems:"center"}}>
+      <button
+        style={{  backgroundColor:"purple",color:"white",border:"none", padding:"5px 10px",cursor:"pointer",marginRight:"10px"}}
+        onClick={() => paginate(currentPage - 1)}
+        disabled={currentPage === 1}
+      >
+        Prev
+      </button>
+      <p style={{marginRight:"10px",color:"white"}}>
+        Page {currentPage} / {totalPages}
+      </p>
+      <button
+        style={{  backgroundColor:"purple",color:"white",border:"none", padding:"5px 10px",cursor:"pointer",marginRight:"10px"}}
+        onClick={() => paginate(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      >
+        Next
+      </button>
     </nav>
   );
 }
